@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Diurno / Nocturno - Estilo Lúdico</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #111;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 1rem;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 500px;
+    background: #222;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    text-align: center;
+    position: relative;
+  }
+
+  .pregunta {
+    display: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .pregunta.active {
+    display: block;
+    animation: fadeIn 0.5s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  /* Colores según tipo */
+  .diurno { background: #FFD700; color: #111; }
+  .nocturno { background: #1E90FF; color: #fff; }
+  .umbral { background: #8A2BE2; color: #fff; }
+
+  #resultado {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    background: #333;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div id="pregunta1" class="pregunta active">
+    <h1>1️⃣ Cuando empieza el día, vos…</h1>
+    <button class="diurno" onclick="responder('Diurnx', 1)">ya estás despiertx, preparándote para aprovechar la mañana ☀️</button>
+    <button class="nocturno" onclick="responder('Nocturnx', 1)">recién estás volviendo o pensando en dormir 🌙</button>
+  </div>
+
+  <div id="pregunta2" class="pregunta">
+    <h1>2️⃣ En una fiesta, te encontramos…</h1>
+    <button class="diurno" onclick="responder('Diurnx', 2)">charlando y sacando fotos al atardecer 📸</button>
+    <button class="nocturno" onclick="responder('Nocturnx', 2)">perdido entre luces, espuma y música a las 3 a.m. 💃✨</button>
+  </div>
+
+  <div id="pregunta3" class="pregunta">
+    <h1>3️⃣ Tu energía brilla más cuando…</h1>
+    <button class="diurno" onclick="responder('Diurnx', 3)">hay sol y aire fresco 🌻</button>
+    <button class="nocturno" onclick="responder('Nocturnx', 3)">la luna está alta y las luces titilan 🔮</button>
+  </div>
+
+  <div id="pregunta4" class="pregunta">
+    <h1>4️⃣ Elegí tu trago bioluminiscente favorito 🍹</h1>
+    <button class="diurno" onclick="responder('Diurnx', 4)"><b>Solar Fizz</b> – cítrico, amarillo flúor, chispeante ☀️</button>
+    <button class="nocturno" onclick="responder('Nocturnx', 4)"><b>Lunar Glow</b> – azul, suave, brilla en la oscuridad 🌙</button>
+  </div>
+
+  <div id="pregunta5" class="pregunta">
+    <h1>5️⃣ Si te perdés en el Festival Umbrales, ¿dónde te encontraríamos?</h1>
+    <button class="diurno" onclick="responder('Diurnx', 5)">En la zona del <b>hongo Aurora Cianus</b>, bailando entre luces suaves 🌞</button>
+    <button class="nocturno" onclick="responder('Nocturnx', 5)">En el <b>Tenebra Ruber</b>, donde el ritmo vibra en la oscuridad 🔥</button>
+  </div>
+
+  <div id="pregunta6" class="pregunta">
+    <h1>6️⃣ ¿Qué sonido te calma más?</h1>
+    <button class="diurno" onclick="responder('Diurnx', 6)">pájaros, viento y guitarras suaves 🎶</button>
+    <button class="nocturno" onclick="responder('Nocturnx', 6)">beats profundos, risas y luces en movimiento 💫</button>
+  </div>
+
+  <div id="pregunta7" class="pregunta">
+    <h1>7️⃣ Tu vestimenta en Umbrales sería…</h1>
+    <button class="diurno" onclick="responder('Diurnx', 7)">tonos cálidos, flores, reflejos dorados 🌼</button>
+    <button class="nocturno" onclick="responder('Nocturnx', 7)">negro con detalles flúor y trazos de luz 💜</button>
+  </div>
+
+  <div id="pregunta8" class="pregunta">
+    <h1>8️⃣ Elegí una frase del universo:</h1>
+    <button class="diurno" onclick="responder('Diurnx', 8)">“El sol también tiene secretos.” ☀️</button>
+    <button class="nocturno" onclick="responder('Nocturnx', 8)">“La noche no duerme, respira.” 🌙</button>
+  </div>
+
+  <div id="pregunta9" class="pregunta">
+    <h1>9️⃣ ¿Qué te mueve más?</h1>
+    <button class="diurno" onclick="responder('Diurnx', 9)">la claridad, la calma, el encuentro 🌞</button>
+    <button class="nocturno" onclick="responder('Nocturnx', 9)">el misterio, el ritmo, la expansión 🌒</button>
+  </div>
+
+  <div id="pregunta10" class="pregunta">
+    <h1>🔟 Y por último… ¿Se puede vivir entre los dos mundos?</h1>
+    <button class="diurno" onclick="responder('Diurnx', 10)">No, cada quien tiene su ciclo.</button>
+    <button class="umbral" onclick="responder('Umbral', 10)">Sí, el Umbral nos une.</button>
+  </div>
+
+  <div id="resultado"></div>
+</div>
+
+<script>
+let respuestas = [];
+
+function responder(valor, numPregunta) {
+  respuestas.push(valor);
+  // Ocultar pregunta actual
+  document.getElementById(`pregunta${numPregunta}`).classList.remove('active');
+  // Mostrar siguiente
+  const siguiente = document.getElementById(`pregunta${numPregunta + 1}`);
+  if (siguiente) {
+    siguiente.classList.add('active');
+  } else {
+    calcularResultado();
+  }
+}
+
+function calcularResultado() {
+  let count = { Diurnx:0, Nocturnx:0, Umbral:0 };
+  respuestas.forEach(r => count[r]++);
+
+  let resultadoFinal = "";
+  if (count.Diurnx > count.Nocturnx && count.Diurnx > count.Umbral) {
+    resultadoFinal = "☀️ DIURNX – Hijo del Aurora Cianus";
+  } else if (count.Nocturnx > count.Diurnx && count.Nocturnx > count.Umbral) {
+    resultadoFinal = "🌙 NOCTURNX – Descendiente del Tenebra Ruber";
+  } else {
+    resultadoFinal = "🌗 UMBRAL – Ser mixtx";
+  }
+
+  document.getElementById("resultado").innerHTML = `
+    <h2>Resultado final:</h2>
+    <p>${resultadoFinal}</p>
+    <p>Respuestas Diurnx: ${count.Diurnx}, Nocturnx: ${count.Nocturnx}, Umbral: ${count.Umbral}</p>
+  `;
+}
+</script>
+
+</body>
+</html>
