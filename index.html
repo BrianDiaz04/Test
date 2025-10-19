@@ -7,24 +7,82 @@
 <style>
   body {
     font-family: 'Arial', sans-serif;
-    background: #111;
+    background: #050014;
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 0 1rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* línea azul lateral */
+  body::after {
+    content: "";
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 10px;
+    height: 100vh;
+    background: #0015ff;
+  }
+
+  /* círculo rosa */
+  .circulo {
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    background: #ff00ff;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  /* estrella amarilla */
+  .estrella {
+    position: absolute;
+    bottom: 100px;
+    right: 80px;
+    width: 120px;
+    height: 120px;
+    background: transparent;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 
+                       79% 91%, 50% 70%, 21% 91%, 32% 57%, 
+                       2% 35%, 39% 35%);
+    background-color: #fff200;
+    z-index: 0;
+  }
+
+  /* círculos verdes */
+  .circulo-verde {
+    position: absolute;
+    bottom: 200px;
+    right: 160px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #00ff2a;
+    z-index: 0;
+  }
+  .circulo-verde:nth-child(2) {
+    width: 15px;
+    height: 15px;
+    bottom: 250px;
+    right: 120px;
   }
 
   .container {
     width: 100%;
     max-width: 500px;
-    background: #222;
+    background: transparent;
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
     text-align: center;
     position: relative;
+    z-index: 1;
   }
 
   .pregunta {
@@ -34,7 +92,7 @@
 
   .pregunta.active {
     display: block;
-    animation: fadeIn 0.5s;
+    animation: fadeIn 0.6s;
   }
 
   @keyframes fadeIn {
@@ -69,19 +127,76 @@
   .nocturno { background: #1E90FF; color: #fff; }
   .umbral { background: #8A2BE2; color: #fff; }
 
+  /* botón neón */
+  .btn-neon {
+    background: transparent;
+    color: #00ff5a;
+    border: 2px solid #00ff5a;
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ff5a, 0 0 20px #00ff5a inset;
+    text-shadow: 0 0 5px #00ff5a;
+    transition: 0.3s ease;
+  }
+
+  .btn-neon:hover {
+    background: #00ff5a;
+    color: #050014;
+    box-shadow: 0 0 25px #00ff5a, 0 0 50px #00ff5a;
+  }
+
   #resultado {
     margin-top: 1.5rem;
     font-size: 1.2rem;
-    background: #333;
+    background: #111;
     padding: 1rem;
     border-radius: 15px;
+  }
+
+  /* texto inicial */
+  .titulo-principal {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .titulo-principal span.diurnx {
+    color: #ff00ff;
+  }
+
+  .titulo-principal span.nocturnx {
+    color: #0015ff;
+  }
+
+  .subtexto {
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: #fff;
+    font-weight: 500;
   }
 </style>
 </head>
 <body>
 
+<div class="circulo"></div>
+<div class="estrella"></div>
+<div class="circulo-verde"></div>
+<div class="circulo-verde"></div>
+
 <div class="container">
-  <div id="pregunta1" class="pregunta active">
+
+  <!-- PANTALLA INICIAL -->
+  <div id="pregunta0" class="pregunta active">
+    <h1 class="titulo-principal">¿Sos <span class="diurnx">Diurnx</span><br> o <span class="nocturnx">Nocturnx?</span></h1>
+    <p class="subtexto">Porque en Noctilux, hasta la luz tiene personalidad.</p>
+    <br><br>
+    <button class="btn-neon" onclick="responder('inicio', 0)">DESCUBRILO</button>
+  </div>
+
+  <!-- PREGUNTAS -->
+  <div id="pregunta1" class="pregunta">
     <h1>1️⃣ Cuando empieza el día, vos…</h1>
     <button class="diurno" onclick="responder('Diurnx', 1)">ya estás despiertx, preparándote para aprovechar la mañana ☀️</button>
     <button class="nocturno" onclick="responder('Nocturnx', 1)">recién estás volviendo o pensando en dormir 🌙</button>
@@ -148,10 +263,9 @@
 let respuestas = [];
 
 function responder(valor, numPregunta) {
-  respuestas.push(valor);
-  // Ocultar pregunta actual
+  if (numPregunta !== 0) respuestas.push(valor);
+
   document.getElementById(`pregunta${numPregunta}`).classList.remove('active');
-  // Mostrar siguiente
   const siguiente = document.getElementById(`pregunta${numPregunta + 1}`);
   if (siguiente) {
     siguiente.classList.add('active');
@@ -182,4 +296,4 @@ function calcularResultado() {
 </script>
 
 </body>
-  </html>
+</html>
