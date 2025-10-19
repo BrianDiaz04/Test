@@ -1,0 +1,275 @@
+:root {
+  --color-circulo: #ff00ff;
+ --color-circulitos:#00ff2a ;
+ --estrella-img: url('star1.png');
+ --lineavertical: #0015ff;
+
+}
+
+body.estado-test {
+  --color-circulo: #ff00ff;
+  --color-circulitos:#00ff2a ;
+  --estrella-img: url('star1.png');
+  --lineavertical: #0015ff;
+}
+
+body.estado-diurno {
+  --color-circulo: #ff00ff;
+  --color-circulitos:#ff00ff ;
+  --estrella-img: url('star.png');
+  --lineavertical: #ff00ff;
+   --titulo:#FFCC00;
+ --subtitulo:#ff00ff;
+}
+
+body.estado-nocturno {
+  --color-circulo: #0015ff;
+   --color-circulitos: #0015ff;
+   --estrella-img: url('star2.png');
+   --lineavertical: #0015ff;
+    --titulo:#00ff2a;
+ --subtitulo:#0015ff;
+}
+
+body.estado-umbral {
+  --color-circulo: #00ff2a;
+  --color-circulitos:#00ff2a ;
+  --estrella-img: url('star3.png');
+  --lineavertical: #FFCC00;
+   --titulo:#ff00ff;
+ --subtitulo:#FFCC00;
+}
+
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('./fonts/Rubik-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bebas Neue Regular */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('./fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+body {
+    font-family: 'Rubik', sans-serif; 
+    text-transform: uppercase;
+    background: #050014;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 1rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* línea azul lateral */
+  body::after {
+    content: "";
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 10px;
+    height: 100vh;
+    background: var(--lineavertical);
+  }
+
+  /* círculo rosa */
+  .circulo {
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    background: var(--color-circulo);
+    border-radius: 50%;
+     transition: background 0.6s ease;
+    z-index: 0;
+  }
+
+  /* estrella amarilla */
+  .estrella {
+    position: absolute;
+    background: var(--estrella-img) no-repeat center/contain;
+    bottom: 100px;
+    right: 80px;
+    width: 150px;
+    height: 150px;
+    z-index: 0;
+}
+
+
+  /* círculos verdes */
+  .circulo-verde {
+    position: absolute;
+    bottom: 200px;
+    right: 160px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--color-circulitos);
+    z-index: 0;
+  }
+   .circulo-verde2 {
+    position: absolute;
+    bottom: 200px;
+    right: 190px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--color-circulitos);
+    z-index: 0;
+  }
+  .circulo-verde:nth-child(2) {
+    width: 15px;
+    height: 15px;
+    bottom: 250px;
+    right: 120px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 500px;
+    background: transparent;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+.titulo{
+    color: var(--titulo);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 9.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+.resultado p{
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+.subtitulo{
+    color: var(--subtitulo);
+}
+  .pregunta {
+    display: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .pregunta.active {
+    display: block;
+    animation: fadeIn 0.6s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.2s;
+    margin-bottom: 4rem;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  /* Colores según tipo */
+  .diurno {background: transparent;
+    color: #FF00FF;
+    border: 2px solid #FF00FF;
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF inset;
+    transition: 0.3s ease; }
+  .nocturno {background: transparent;
+    color: #0015ff;
+    border: 2px solid #0015ff;
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0015ff, 0 0 20px #0015ff inset;
+    transition: 0.3s ease; }
+  /* botón neón */
+  .btn-neon {
+    background: transparent;
+    color: #14FF14;
+    border: 2px solid #14FF14;
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #14FF14, 0 0 20px #14FF14 inset;
+    text-shadow: 0 0 5px #14FF14;
+    transition: 0.3s ease;
+  }
+
+  .btn-neon:hover {
+    background: #14FF14;
+    color: #050014;
+    box-shadow: 0 0 25px #14FF14, 0 0 50px #14FF14;
+  }
+
+.resultado {
+  display: none;
+  text-align: center;
+  margin-top: 50px;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  /* texto inicial */
+  .titulo-principal {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .titulo-principal span.diurnx {
+    color: #ff00ff;
+  }
+
+  .titulo-principal span.nocturnx {
+    color: #0015ff;
+  }
+
+  .subtexto {
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: #fff;
+    font-weight: 500;
+  }
