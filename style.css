@@ -241,11 +241,15 @@ body::after {
   font-size: clamp(1rem, 3vw, 1.5rem);
 }
 
+/* ======================= */
+/* 🔸 RESULTADO FINAL (ajustado) 🔸 */
+/* ======================= */
+
 .resultado {
   display: none;
   text-align: center;
-  margin-top: 2vh; /* antes 5vh → más compacto */
-  padding: 4vh 2vw; /* espacio interno balanceado */
+  margin-top: 2vh;
+  padding: 4vh 2vw;
   opacity: 0;
   transition: opacity 0.6s ease;
 }
@@ -256,49 +260,51 @@ body::after {
   animation: fadeIn 0.8s ease;
 }
 
-/* Título principal del resultado */
+/* 🔹 Título principal */
 .resultado .titulo {
   color: var(--titulo);
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4rem, 14vw, 8rem);
-  line-height: 0.9; /* reduce separación vertical */
-  margin-bottom: 0.8vh; /* antes era más grande */
+  font-size: clamp(5rem, 17vw, 10rem); /* más grande */
+  line-height: 0.9;
+  margin-bottom: 1vh;
 }
 
-/* Subtítulo (ej. “Hijo del Aurora Cianus”) */
+/* 🔹 Subtítulo */
 .resultado .subtitulo {
   color: var(--subtitulo);
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-family: 'Rubik', sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.3rem); /* más chico */
   margin-top: 0;
-  margin-bottom: 4vh;
+  margin-bottom: 3vh;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
-/* Frase destacada */
+/* 🔹 Párrafos */
+.resultado p {
+  font-family: 'Bebas Neue', sans-serif; /* cambio de tipografía */
+  font-weight: 400;
+  text-transform: none;
+  font-size: clamp(1.1rem, 3vw, 1.6rem); /* más grandes */
+  line-height: 1.4;
+  margin: 2vh 0 6vh 0; /* más aire debajo (antes de la lista) */
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+}
+
+/* 🔹 Frase destacada (si la usás separada del párrafo principal) */
 .resultado .frase {
   font-family: 'Rubik', sans-serif;
   font-size: clamp(1rem, 2.3vw, 1.4rem);
   line-height: 1.5;
   margin-bottom: 6vh;
   font-weight: 500;
-  text-transform: none; /* mantiene estilo de frase */
-}
-
-/* Párrafos de descripción */
-.resultado p {
-  font-family: 'Rubik', sans-serif;
-  font-weight: 600;
   text-transform: none;
-  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-  margin: 2vh 0;
-  line-height: 1.5;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* Viñetas más marcadas y espaciadas */
+/* 🔹 Lista */
 .resultado ul {
   list-style: disc;
   padding-left: 1.2em;
@@ -309,7 +315,35 @@ body::after {
 
 .resultado li {
   margin-bottom: 3vh;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
 }
+
+/* 🔹 Responsive */
+@media (max-width: 600px) {
+  .resultado {
+    padding: 3vh 3vw;
+  }
+
+  .resultado .titulo {
+    font-size: clamp(4rem, 20vw, 6rem);
+    margin-bottom: 1vh;
+  }
+
+  .resultado .subtitulo {
+    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+    margin-bottom: 2.5vh;
+  }
+
+  .resultado p {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    margin-bottom: 5vh;
+  }
+
+  .resultado li {
+    margin-bottom: 2.5vh;
+  }
+}
+
 
 /* ======================= */
 /* 🔸 RESPONSIVE 🔸 */
@@ -429,3 +463,4 @@ button:hover {
     height: 50vh;
   }
 }
+
