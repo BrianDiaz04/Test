@@ -1,45 +1,55 @@
 :root {
   --color-circulo: #ff00ff;
- --color-circulitos:#00ff2a ;
- --estrella-img: url('star1.png');
- --lineavertical: #0015ff;
-
+  --color-circulitos: #00ff2a;
+  --estrella-img: url('star1.png');
+  --lineavertical: #0015ff;
+  --titulo: #FFCC00;
+  --subtitulo: #ff00ff;
 }
+
+/* ======================= */
+/* 🔹 ESTADOS DE COLOR 🔹 */
+/* ======================= */
 
 body.estado-test {
   --color-circulo: #ff00ff;
-  --color-circulitos:#00ff2a ;
+  --color-circulitos: #00ff2a;
   --estrella-img: url('star1.png');
   --lineavertical: #0015ff;
+  --titulo: #FFCC00;
+  --subtitulo: #ff00ff;
 }
 
 body.estado-diurno {
   --color-circulo: #ff00ff;
-  --color-circulitos:#ff00ff ;
+  --color-circulitos: #ff00ff;
   --estrella-img: url('star.png');
   --lineavertical: #ff00ff;
-   --titulo:#FFCC00;
- --subtitulo:#ff00ff;
+  --titulo: #FFCC00;
+  --subtitulo: #ff00ff;
 }
 
 body.estado-nocturno {
   --color-circulo: #0015ff;
-   --color-circulitos: #0015ff;
-   --estrella-img: url('star2.png');
-   --lineavertical: #0015ff;
-    --titulo:#00ff2a;
- --subtitulo:#0015ff;
+  --color-circulitos: #0015ff;
+  --estrella-img: url('star2.png');
+  --lineavertical: #0015ff;
+  --titulo: #00ff2a;
+  --subtitulo: #0015ff;
 }
 
 body.estado-umbral {
   --color-circulo: #00ff2a;
-  --color-circulitos:#00ff2a ;
+  --color-circulitos: #00ff2a;
   --estrella-img: url('star3.png');
   --lineavertical: #FFCC00;
-   --titulo:#ff00ff;
- --subtitulo:#FFCC00;
+  --titulo: #ff00ff;
+  --subtitulo: #FFCC00;
 }
 
+/* ======================= */
+/* 🔸 FUENTES 🔸 */
+/* ======================= */
 
 @font-face {
   font-family: 'Rubik';
@@ -49,7 +59,6 @@ body.estado-umbral {
   font-display: swap;
 }
 
-/* Bebas Neue Regular */
 @font-face {
   font-family: 'Bebas Neue';
   src: url('./fonts/BebasNeue-Regular.ttf') format('truetype');
@@ -58,193 +67,132 @@ body.estado-umbral {
   font-display: swap;
 }
 
-html{
-  color-scheme: light;
+/* ======================= */
+/* 🔸 BASE Y LAYOUT 🔸 */
+/* ======================= */
+
+html {
+  font-size: calc(10px + 0.5vw); /* Escalado automático */
 }
+
 body {
-    font-family: 'Rubik', sans-serif; 
-    text-transform: uppercase;
-    background: #050014;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 0 1rem;
-    overflow: hidden;
-    position: relative;
-  }
-
-  /* línea azul lateral */
-  body::after {
-    content: "";
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 10px;
-    height: 100vh;
-    background: var(--lineavertical);
-  }
-
-  /* círculo rosa */
-  .circulo {
-    position: absolute;
-    top: -150px;
-    left: -150px;
-    width: 400px;
-    height: 400px;
-    background: var(--color-circulo);
-    border-radius: 50%;
-     transition: background 0.6s ease;
-    z-index: 0;
-  }
-
-  /* estrella amarilla */
-  .estrella {
-    position: absolute;
-    background: var(--estrella-img) no-repeat center/contain;
-    bottom: 100px;
-    right: 80px;
-    width: 150px;
-    height: 150px;
-    z-index: 0;
+  font-family: 'Rubik', sans-serif;
+  text-transform: uppercase;
+  background: #050014;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 4vw;
+  overflow: hidden;
+  position: relative;
 }
 
-
-  /* círculos verdes */
-  .circulo-verde {
-    position: absolute;
-    bottom: 200px;
-    right: 160px;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: var(--color-circulitos);
-    z-index: 0;
-  }
-   .circulo-verde2 {
-    position: absolute;
-    bottom: 200px;
-    right: 190px;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: var(--color-circulitos);
-    z-index: 0;
-  }
-  .circulo-verde:nth-child(2) {
-    width: 15px;
-    height: 15px;
-    bottom: 250px;
-    right: 120px;
-  }
-
-  .container {
-    width: 100%;
-    max-width: 500px;
-    background: transparent;
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-.titulo{
-    color: var(--titulo);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 9.5rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    line-height: 1.2;
+/* Línea lateral */
+body::after {
+  content: "";
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 10px;
+  height: 100vh;
+  background: var(--lineavertical);
 }
-.resultado p{
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 400;
-    font-size: 1.5rem;
-}
-.subtitulo{
-    color: var(--subtitulo);
-}
-  .pregunta {
-    display: none;
-    transition: opacity 0.5s ease;
-  }
 
-  .pregunta.active {
-    display: block;
-    animation: fadeIn 0.6s;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px);}
-    to { opacity: 1; transform: translateY(0);}
-  }
-
-  h1 {
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-  }
-
-  button {
-    display: block;
-    width: 100%;
-    margin: 0.5rem 0;
-    padding: 1rem;
-    border: none;
-    border-radius: 15px;
-    font-size: 1rem;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: transform 0.2s;
-    margin-bottom: 4rem;
-  }
-
-  button:hover {
-    transform: scale(1.05);
-  }
-
-  /* Colores según tipo */
-  .diurno {background: transparent;
-    color: #FF00FF;
-    border: 2px solid #FF00FF;
-    font-size: 1.3rem;
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF inset;
-    transition: 0.3s ease; }
-  .nocturno {background: transparent;
-    color: #0015ff;
-    border: 2px solid #0015ff;
-    font-size: 1.3rem;
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #0015ff, 0 0 20px #0015ff inset;
-    transition: 0.3s ease; }
-  /* botón neón */
-  .btn-neon {
-    background: transparent;
-    color: #14FF14;
-    border: 2px solid #14FF14;
-    font-size: 1.3rem;
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #14FF14, 0 0 20px #14FF14 inset;
-    text-shadow: 0 0 5px #14FF14;
-    transition: 0.3s ease;
-  }
-
-  .btn-neon:hover {
-    background: #14FF14;
-    color: #050014;
-    box-shadow: 0 0 25px #14FF14, 0 0 50px #14FF14;
-  }
-
-.resultado {
-  display: none;
+/* Contenedor */
+.container {
+  width: 100%;
+  max-width: 600px;
+  background: transparent;
+  border-radius: 2vw;
+  padding: 4vh 3vw;
   text-align: center;
-  margin-top: 50px;
-  animation: fadeIn 1s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* ======================= */
+/* 🔸 ELEMENTOS DECORATIVOS 🔸 */
+/* ======================= */
+
+.circulo {
+  position: absolute;
+  top: -15vh;
+  left: -15vh;
+  width: 40vh;
+  height: 40vh;
+  background: var(--color-circulo);
+  border-radius: 50%;
+  transition: background 0.6s ease;
+  z-index: 0;
+}
+
+.estrella {
+  position: absolute;
+  background: var(--estrella-img) no-repeat center/contain;
+  bottom: 10vh;
+  right: 8vw;
+  width: 15vh;
+  height: 15vh;
+  z-index: 0;
+}
+
+.circulo-verde,
+.circulo-verde2 {
+  position: absolute;
+  width: 2.5vh;
+  height: 2.5vh;
+  border-radius: 50%;
+  background: var(--color-circulitos);
+  z-index: 0;
+}
+
+.circulo-verde {
+  bottom: 20vh;
+  right: 16vw;
+}
+.circulo-verde2 {
+  bottom: 22vh;
+  right: 20vw;
+}
+
+/* ======================= */
+/* 🔸 PREGUNTAS Y ANIMACIONES 🔸 */
+/* ======================= */
+
+.pregunta {
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start; /* ← antes era center */
+  align-items: center;
+  min-height: 60vh;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.4s ease;
+  position: relative;
+  text-align: center;
+  padding-top: 4vh; /* espacio arriba fijo */
+}
+
+.pregunta.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeIn 0.6s ease;
+}
+
+.pregunta h2 {
+  margin-bottom: 3vh; /* separa texto del botón */
+  line-height: 1.3;
+  max-width: 90%;
+}
+
+/* opcional: mantener misma altura general en todas las preguntas */
+@media (max-width: 600px) {
+  .pregunta {
+    min-height: 55vh;
+    padding-top: 3vh;
+  }
 }
 
 @keyframes fadeIn {
@@ -252,27 +200,154 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-  /* texto inicial */
+/* ======================= */
+/* 🔸 TEXTOS 🔸 */
+/* ======================= */
+
+.titulo-principal {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 2vh;
+}
+
+.titulo-principal span.diurnx {
+  color: #ff00ff;
+}
+.titulo-principal span.nocturnx {
+  color: #0015ff;
+}
+
+.subtexto {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  margin-top: 1rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.titulo {
+  color: var(--titulo);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 15vw, 9.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.subtitulo {
+  color: var(--subtitulo);
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.resultado p {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.resultado {
+  display: none;
+  text-align: center;
+  margin-top: 5vh;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.resultado[style*="display: block"] {
+  display: block !important;
+  opacity: 1;
+  animation: fadeIn 0.8s ease;
+}
+
+/* ======================= */
+/* 🔸 BOTONES 🔸 */
+/* ======================= */
+
+button {
+  width: 100%;
+  max-width: 480px;
+  margin: 1.5vh auto;
+  padding: clamp(0.8rem, 2.5vh, 1rem);
+  border: none;
+  border-radius: 12px;
+  font-size: clamp(0.9rem, 3vw, 1.3rem);
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Diurno */
+.diurno {
+  background: transparent;
+  color: #FF00FF;
+  border: 2px solid #FF00FF;
+  box-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF inset;
+}
+
+/* Nocturno */
+.nocturno {
+  background: transparent;
+  color: #0015ff;
+  border: 2px solid #0015ff;
+  box-shadow: 0 0 10px #0015ff, 0 0 20px #0015ff inset;
+}
+
+/* Botón inicial */
+.btn-neon {
+  background: transparent;
+  color: #14FF14;
+  border: 2px solid #14FF14;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #14FF14, 0 0 20px #14FF14 inset;
+  text-shadow: 0 0 5px #14FF14;
+  transition: 0.3s ease;
+}
+
+.btn-neon:hover {
+  background: #14FF14;
+  color: #050014;
+  box-shadow: 0 0 25px #14FF14, 0 0 50px #14FF14;
+}
+
+/* ======================= */
+/* 🔸 MEDIA QUERIES 🔸 */
+/* ======================= */
+
+@media (max-width: 900px) {
+  .container {
+    padding: 5vh 6vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 90vw;
+    padding: 3vh 4vw;
+  }
+
   .titulo-principal {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 5.5rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    line-height: 1.2;
+    font-size: clamp(2rem, 10vw, 3.5rem);
   }
 
-  .titulo-principal span.diurnx {
-    color: #ff00ff;
+  .estrella {
+    width: 12vh;
+    height: 12vh;
+    bottom: 8vh;
   }
 
-  .titulo-principal span.nocturnx {
-    color: #0015ff;
+  .circulo {
+    top: -20vh;
+    left: -20vh;
+    width: 50vh;
+    height: 50vh;
   }
-
-  .subtexto {
-    font-size: 1rem;
-    margin-top: 1rem;
-    color: #fff;
-    font-weight: 500;
-
-  }
+}
